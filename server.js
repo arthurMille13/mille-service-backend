@@ -5,12 +5,12 @@ import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
-import { buildSuggestions } from "./src/aiEngine.js";
-import { saveRequest, getRequest, saveBooking, listBookings } from "./src/store.js";
+import { buildSuggestions } from "./aiEngine.js";
+import { saveRequest, getRequest, saveBooking, listBookings } from "./store.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const policy = JSON.parse(
-  readFileSync(join(__dirname, "data", "policy.json"), "utf-8")
+  readFileSync(join(__dirname, "policy.json"), "utf-8")
 );
 
 const app = express();
@@ -27,9 +27,6 @@ app.get("/api/policy", (_req, res) => {
   res.json(policy);
 });
 
-// Submit a new travel request. In a real system this is where an LLM
-// call + travel-content API (Amadeus/Duffel/Sabre) would run. Here we
-// generate deterministic mock options so the demo is self-contained.
 app.post("/api/requests", (req, res) => {
   const { destination, reason, startDate, endDate, requester } = req.body || {};
 
@@ -61,9 +58,6 @@ app.get("/api/requests/:id", (req, res) => {
   res.json(request);
 });
 
-// Validate a request: pick one flight + one hotel and "book" them.
-// A real implementation would call the airline/hotel booking APIs and
-// a corporate card/payment processor here.
 app.post("/api/bookings", (req, res) => {
   const { requestId, flightId, hotelId } = req.body || {};
   const request = getRequest(requestId);
