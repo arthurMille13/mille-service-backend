@@ -51,10 +51,10 @@ function addMinutes(time, minutes) {
 export function buildSuggestions(destination, policy) {
   const rng = mulberry32(seedFromString(destination.trim().toLowerCase()));
 
-  const flights = Array.from({ length: 2 }).map((_, i) => {
+  const flights = Array.from({ length: 3 }).map((_, i) => {
     const departure = randomTime(rng);
     const durationMin = 60 + Math.floor(rng() * 90);
-    const price = Math.round(69 + rng() * (i === 0 ? 60 : 140));
+    const price = Math.round(69 + rng() * (i === 0 ? 60 : i === 1 ? 140 : 220));
     return {
       id: `flight-${i + 1}`,
       airline: pick(rng, AIRLINES),
@@ -70,8 +70,8 @@ export function buildSuggestions(destination, policy) {
     };
   });
 
-  const hotels = Array.from({ length: 2 }).map((_, i) => {
-    const price = Math.round(59 + rng() * (i === 0 ? 45 : 130));
+  const hotels = Array.from({ length: 3 }).map((_, i) => {
+    const price = Math.round(59 + rng() * (i === 0 ? 45 : i === 1 ? 130 : 210));
     const stars = 3 + Math.floor(rng() * 2);
     return {
       id: `hotel-${i + 1}`,
