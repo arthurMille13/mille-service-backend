@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
 import { buildSuggestions } from "./aiEngine.js";
+import { getAiRecommendation } from "./aiReasoning.js";
 import { saveRequest, getRequest, saveBooking, listBookings } from "./store.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -27,7 +28,10 @@ app.get("/api/policy", (_req, res) => {
   res.json(policy);
 });
 
-app.post("/api/requests", (req, res) => {
+// Submit a new travel request. In a real system this is where an LLM
+// call + travel-content API (Amadeus/Duffel/Sabre) would run. Here we
+// generate deterministic mock options so the demo is self-contained.
+app.post("/api/requests", async (req, res) => {
   const { destination, reason, startDate, endDate, requester } = req.body || {};
 
   if (!destination || !startDate || !endDate) {
@@ -36,16 +40,31 @@ app.post("/api/requests", (req, res) => {
     });
   }
 
-  const suggestions = buildSuggestions(destination, policy);
-  const request = {
-    id: randomUUID(),
+  const tripContext = {
     destination,
     reason: reason || "Non précisé",
     startDate,
     endDate,
     requester: requester || "Utilisateur test",
+  };
+
+  const suggestions = buildSuggestions(destination, policy);
+
+  // Real AI reasoning over the candidate options. Returns null (and the
+  // request still succeeds) if no API key is configured or the call fails.
+  const aiRecommendation = await getAiRecommendation(
+    tripContext,
+    policy,
+    suggestions.flights,
+    suggestions.hotels
+  );
+
+  const request = {
+    id: randomUUID(),
+    ...tripContext,
     createdAt: new Date().toISOString(),
     suggestions,
+    aiRecommendation,
   };
 
   saveRequest(request);
@@ -58,6 +77,9 @@ app.get("/api/requests/:id", (req, res) => {
   res.json(request);
 });
 
+// Validate a request: pick one flight + one hotel and "book" them.
+// A real implementation would call the airline/hotel booking APIs and
+// a corporate card/payment processor here.
 app.post("/api/bookings", (req, res) => {
   const { requestId, flightId, hotelId } = req.body || {};
   const request = getRequest(requestId);
