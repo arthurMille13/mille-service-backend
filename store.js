@@ -1,47 +1,100 @@
-import { readFileSync, writeFileSync } from "fs";
+import express from "express";
+import cors from "cors";
+import { randomUUID } from "crypto";
+import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
-// This file simulates a database using a JSON file on disk.
-// Swap this module out for a real database (Postgres, Mongo, etc.)
-// when moving past the prototype stage — every other file only
-// talks to the functions exported here, so that's the only place
-// a real integration would need to change.
+import { buildSuggestions } from "./aiEngine.js";
+import { saveRequest, getRequest, saveBooking, listBookings } from "./store.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const DB_PATH = join(__dirname, "..", "data", "db.json");
+const policy = JSON.parse(
+  readFileSync(join(__dirname, "policy.json"), "utf-8")
+);
 
-function readDb() {
-  const raw = readFileSync(DB_PATH, "utf-8");
-  return JSON.parse(raw);
-}
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-function writeDb(db) {
-  writeFileSync(DB_PATH, JSON.stringify(db, null, 2));
-}
+const PORT = process.env.PORT || 4000;
 
-export function saveRequest(request) {
-  const db = readDb();
-  db.requests.push(request);
-  writeDb(db);
-  return request;
-}
+app.get("/api/health", (_req, res) => {
+  res.json({ status: "ok" });
+});
 
-export function getRequest(id) {
-  const db = readDb();
-  return db.requests.find((r) => r.id === id) || null;
-}
+app.get("/api/policy", (_req, res) => {
+  res.json(policy);
+});
 
-export function saveBooking(booking) {
-  const db = readDb();
-  db.bookings.push(booking);
-  writeDb(db);
-  return booking;
-}
+app.post("/api/requests", (req, res) => {
+  const { destination, reason, startDate, endDate, requester } = req.body || {};
 
-export function listBookings() {
-  const db = readDb();
-  return [...db.bookings].sort(
-    (a, b) => new Date(a.startDate) - new Date(b.startDate)
-  );
-}
+  if (!destination || !startDate || !endDate) {
+    return res.status(400).json({
+      error: "destination, startDate and endDate are required",
+    });
+  }
+
+  const suggestions = buildSuggestions(destination, policy);
+  const request = {
+    id: randomUUID(),
+    destination,
+    reason: reason || "Non précisé",
+    startDate,
+    endDate,
+    requester: requester || "Utilisateur test",
+    createdAt: new Date().toISOString(),
+    suggestions,
+  };
+
+  saveRequest(request);
+  res.status(201).json(request);
+});
+
+app.get("/api/requests/:id", (req, res) => {
+  const request = getRequest(req.params.id);
+  if (!request) return res.status(404).json({ error: "Request not found" });
+  res.json(request);
+});
+
+app.post("/api/bookings", (req, res) => {
+  const { requestId, flightId, hotelId } = req.body || {};
+  const request = getRequest(requestId);
+
+  if (!request) {
+    return res.status(404).json({ error: "Request not found" });
+  }
+
+  const flight = request.suggestions.flights.find((f) => f.id === flightId);
+  const hotel = request.suggestions.hotels.find((h) => h.id === hotelId);
+
+  if (!flight || !hotel) {
+    return res.status(400).json({ error: "Invalid flight or hotel id" });
+  }
+
+  const booking = {
+    id: randomUUID(),
+    requestId,
+    destination: request.destination,
+    reason: request.reason,
+    requester: request.requester,
+    startDate: request.startDate,
+    endDate: request.endDate,
+    flight,
+    hotel,
+    status: "confirmed",
+    bookedAt: new Date().toISOString(),
+  };
+
+  saveBooking(booking);
+  res.status(201).json(booking);
+});
+
+app.get("/api/dashboard", (_req, res) => {
+  res.json({ bookings: listBookings() });
+});
+
+app.listen(PORT, () => {
+  console.log(`Travel agency backend listening on http://localhost:${PORT}`);
+});
