@@ -1,0 +1,16 @@
+{
+  "name": "travel-agency-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Simulated backend for the corporate travel management prototype: mock AI trip engine + JSON-file data store.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

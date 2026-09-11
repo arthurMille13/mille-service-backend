@@ -1,0 +1,7 @@
+{
+  "companyName": "Acme Corp",
+  "cabinClass": "Economy",
+  "maxFlightPrice": 120,
+  "maxHotelPricePerNight": 100,
+  "currency": "EUR"
+}
