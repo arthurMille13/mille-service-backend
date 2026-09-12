@@ -15,7 +15,14 @@ import Anthropic from "@anthropic-ai/sdk";
 // breaks the request.
 
 const client = process.env.ANTHROPIC_API_KEY
-  ? new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+  ? new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+      // Personal/service-account keys with access to multiple workspaces
+      // must specify which one to bill against on every request.
+      defaultHeaders: process.env.ANTHROPIC_WORKSPACE_ID
+        ? { "anthropic-workspace-id": process.env.ANTHROPIC_WORKSPACE_ID }
+        : undefined,
+    })
   : null;
 
 const MODEL = "claude-haiku-4-5-20251001";
