@@ -67,21 +67,6 @@ export function buildSuggestions(destination, policy) {
       cabin: policy.cabinClass,
       price,
       compliant: price <= policy.maxFlightPrice,
-    };
-  });
-
-  const hotels = Array.from({ length: 3 }).map((_, i) => {
-    const price = Math.round(59 + rng() * (i === 0 ? 45 : i === 1 ? 130 : 210));
-    const stars = 3 + Math.floor(rng() * 2);
-    return {
-      id: `hotel-${i + 1}`,
-      name: `${pick(rng, HOTEL_BRANDS)} ${destination}`,
-      stars,
-      distanceKm: Math.round((rng() * 5 + 0.3) * 10) / 10,
-      pricePerNight: price,
-      compliant: price <= policy.maxHotelPricePerNight,
-    };
-  });
-
-  return { flights, hotels };
-}
+      // Rough estimate (short/medium-haul average ~90g CO2/passenger-km,
+      // ~750km/h cruise speed) — a placeholder until a real emissions
+      // provider (e.g. Amadeus Travel
