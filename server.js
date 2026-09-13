@@ -7,7 +7,16 @@ import { dirname, join } from "path";
 
 import { buildSuggestions } from "./aiEngine.js";
 import { getAiRecommendation } from "./aiReasoning.js";
-import { saveRequest, getRequest, saveBooking, listBookings, saveExpense, listExpenses } from "./store.js";
+import { chatAboutTrip } from "./chat.js";
+import {
+  saveRequest,
+  getRequest,
+  saveBooking,
+  listBookings,
+  getBooking,
+  saveExpense,
+  listExpenses,
+} from "./store.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const policy = JSON.parse(
@@ -161,6 +170,29 @@ app.post("/api/expenses", (req, res) => {
 
 app.get("/api/expenses", (_req, res) => {
   res.json({ expenses: listExpenses(), categories: EXPENSE_CATEGORIES });
+});
+
+// Free-form Q&A about a trip (restaurants, local tips, practical advice).
+// Unlike /api/requests, this is genuine conversation — Claude answers
+// from its own knowledge, not from the simulated flight/hotel catalogue.
+app.post("/api/chat", async (req, res) => {
+  const { bookingId, message, history } = req.body || {};
+
+  if (!message || !message.trim()) {
+    return res.status(400).json({ error: "message is required" });
+  }
+
+  const booking = bookingId ? getBooking(bookingId) : null;
+
+  try {
+    const reply = await chatAboutTrip(booking, history, message.trim());
+    res.json({ reply });
+  } catch (err) {
+    console.error("Chat failed:", err.message);
+    res.status(503).json({
+      error: "L'assistant n'est pas disponible pour le moment.",
+    });
+  }
 });
 
 app.listen(PORT, () => {
