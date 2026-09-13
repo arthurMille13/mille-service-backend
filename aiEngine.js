@@ -7,6 +7,13 @@
 
 const AIRLINES = ["Air France", "Transavia", "Vueling", "KLM", "Lufthansa"];
 const HOTEL_BRANDS = ["Ibis Styles", "Novotel", "Mercure", "Radisson Blu", "Hyatt Place"];
+const STREET_NAMES = [
+  "Rue de la République",
+  "Avenue Jean Jaurès",
+  "Rue du Centre",
+  "Boulevard de la Gare",
+  "Rue Victor Hugo",
+];
 
 // Small deterministic hash so the same destination always produces
 // the same-looking options within a demo session.
@@ -69,4 +76,27 @@ export function buildSuggestions(destination, policy) {
       compliant: price <= policy.maxFlightPrice,
       // Rough estimate (short/medium-haul average ~90g CO2/passenger-km,
       // ~750km/h cruise speed) — a placeholder until a real emissions
-      // provider (e.g. Amadeus Travel
+      // provider (e.g. Amadeus Travel Sustainability) is wired in.
+      co2Kg: Math.round(durationMin * 0.9),
+    };
+  });
+
+  const hotels = Array.from({ length: 3 }).map((_, i) => {
+    const price = Math.round(59 + rng() * (i === 0 ? 45 : i === 1 ? 130 : 210));
+    const stars = 3 + Math.floor(rng() * 2);
+    const streetNumber = 2 + Math.floor(rng() * 140);
+    return {
+      id: `hotel-${i + 1}`,
+      name: `${pick(rng, HOTEL_BRANDS)} ${destination}`,
+      stars,
+      distanceKm: Math.round((rng() * 5 + 0.3) * 10) / 10,
+      pricePerNight: price,
+      compliant: price <= policy.maxHotelPricePerNight,
+      // Simulated address (not a real, geolocated property) — a
+      // placeholder until a real hotel-content provider is wired in.
+      address: `${streetNumber} ${pick(rng, STREET_NAMES)}, ${destination}`,
+    };
+  });
+
+  return { flights, hotels };
+}
