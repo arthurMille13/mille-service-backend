@@ -7,7 +7,7 @@ import { dirname, join } from "path";
 
 import { buildSuggestions } from "./aiEngine.js";
 import { getAiRecommendation } from "./aiReasoning.js";
-import { saveRequest, getRequest, saveBooking, listBookings } from "./store.js";
+import { saveRequest, getRequest, saveBooking, listBookings, saveExpense, listExpenses } from "./store.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const policy = JSON.parse(
@@ -32,7 +32,8 @@ app.get("/api/policy", (_req, res) => {
 // call + travel-content API (Amadeus/Duffel/Sabre) would run. Here we
 // generate deterministic mock options so the demo is self-contained.
 app.post("/api/requests", async (req, res) => {
-  const { destination, reason, startDate, endDate, requester } = req.body || {};
+  const { origin, destination, reason, tripType, startDate, endDate, travelers, note, requester } =
+    req.body || {};
 
   if (!destination || !startDate || !endDate) {
     return res.status(400).json({
@@ -41,10 +42,14 @@ app.post("/api/requests", async (req, res) => {
   }
 
   const tripContext = {
+    origin: origin || "Non précisé",
     destination,
     reason: reason || "Non précisé",
+    tripType: tripType === "oneway" ? "oneway" : "roundtrip",
     startDate,
     endDate,
+    travelers: Number.isFinite(Number(travelers)) && Number(travelers) > 0 ? Number(travelers) : 1,
+    note: note || "",
     requester: requester || "Utilisateur test",
   };
 
@@ -98,8 +103,12 @@ app.post("/api/bookings", (req, res) => {
   const booking = {
     id: randomUUID(),
     requestId,
+    origin: request.origin,
     destination: request.destination,
     reason: request.reason,
+    tripType: request.tripType,
+    travelers: request.travelers,
+    note: request.note,
     requester: request.requester,
     startDate: request.startDate,
     endDate: request.endDate,
@@ -115,6 +124,43 @@ app.post("/api/bookings", (req, res) => {
 
 app.get("/api/dashboard", (_req, res) => {
   res.json({ bookings: listBookings() });
+});
+
+const EXPENSE_CATEGORIES = ["Repas", "Taxi / VTC", "Transports", "Parking", "Autre"];
+
+// Expense notes: for costs incurred during a trip that aren't already
+// covered by the automated flight/hotel booking (meals, taxis, etc.).
+app.post("/api/expenses", (req, res) => {
+  const { category, amount, date, note, bookingId } = req.body || {};
+
+  if (!category || !amount || !date) {
+    return res.status(400).json({ error: "category, amount and date are required" });
+  }
+  if (!EXPENSE_CATEGORIES.includes(category)) {
+    return res.status(400).json({ error: `category must be one of: ${EXPENSE_CATEGORIES.join(", ")}` });
+  }
+  const numericAmount = Number(amount);
+  if (!Number.isFinite(numericAmount) || numericAmount <= 0) {
+    return res.status(400).json({ error: "amount must be a positive number" });
+  }
+
+  const expense = {
+    id: randomUUID(),
+    category,
+    amount: numericAmount,
+    date,
+    note: note || "",
+    bookingId: bookingId || null,
+    status: "pending",
+    createdAt: new Date().toISOString(),
+  };
+
+  saveExpense(expense);
+  res.status(201).json(expense);
+});
+
+app.get("/api/expenses", (_req, res) => {
+  res.json({ expenses: listExpenses(), categories: EXPENSE_CATEGORIES });
 });
 
 app.listen(PORT, () => {
