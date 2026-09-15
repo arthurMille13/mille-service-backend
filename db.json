@@ -1,4 +1,891 @@
 {
-  "requests": [],
-  "bookings": []
+  "requests": [
+    {
+      "id": "83031ed1-7645-4386-ba56-03ce094334eb",
+      "origin": "Paris",
+      "destination": "Lyon",
+      "reason": "Formation",
+      "tripType": "roundtrip",
+      "startDate": "2026-04-14",
+      "endDate": "2026-04-16",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "createdAt": "2026-09-15T12:21:51.211Z",
+      "suggestions": {
+        "flights": [
+          {
+            "id": "flight-1",
+            "airline": "KLM",
+            "flightNumber": "KL2328",
+            "departure": "13:45",
+            "arrival": "15:15",
+            "durationMin": 90,
+            "cabin": "Economy",
+            "price": 122,
+            "compliant": false,
+            "co2Kg": 81
+          },
+          {
+            "id": "flight-2",
+            "airline": "KLM",
+            "flightNumber": "TO6725",
+            "departure": "07:15",
+            "arrival": "08:44",
+            "durationMin": 89,
+            "cabin": "Economy",
+            "price": 202,
+            "compliant": false,
+            "co2Kg": 80
+          },
+          {
+            "id": "flight-3",
+            "airline": "Vueling",
+            "flightNumber": "LH1717",
+            "departure": "19:30",
+            "arrival": "21:24",
+            "durationMin": 114,
+            "cabin": "Economy",
+            "price": 218,
+            "compliant": false,
+            "co2Kg": 103
+          }
+        ],
+        "hotels": [
+          {
+            "id": "hotel-1",
+            "name": "Novotel Lyon",
+            "stars": 4,
+            "distanceKm": 1.6,
+            "pricePerNight": 101,
+            "compliant": false,
+            "address": "117 Boulevard de la Gare, Lyon"
+          },
+          {
+            "id": "hotel-2",
+            "name": "Ibis Styles Lyon",
+            "stars": 3,
+            "distanceKm": 0.9,
+            "pricePerNight": 144,
+            "compliant": false,
+            "address": "80 Avenue Jean Jaurès, Lyon"
+          },
+          {
+            "id": "hotel-3",
+            "name": "Ibis Styles Lyon",
+            "stars": 4,
+            "distanceKm": 3.2,
+            "pricePerNight": 247,
+            "compliant": false,
+            "address": "133 Boulevard de la Gare, Lyon"
+          }
+        ]
+      },
+      "aiRecommendation": null
+    },
+    {
+      "id": "0cb8a0d3-f5f0-4fd8-944b-eac4035d54c1",
+      "origin": "Paris",
+      "destination": "Bordeaux",
+      "reason": "Rendez-vous client",
+      "tripType": "roundtrip",
+      "startDate": "2026-05-06",
+      "endDate": "2026-05-07",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "createdAt": "2026-09-15T12:21:51.258Z",
+      "suggestions": {
+        "flights": [
+          {
+            "id": "flight-1",
+            "airline": "Vueling",
+            "flightNumber": "TO4003",
+            "departure": "10:00",
+            "arrival": "11:14",
+            "durationMin": 74,
+            "cabin": "Economy",
+            "price": 74,
+            "compliant": true,
+            "co2Kg": 67
+          },
+          {
+            "id": "flight-2",
+            "airline": "Air France",
+            "flightNumber": "AF8606",
+            "departure": "18:30",
+            "arrival": "20:39",
+            "durationMin": 129,
+            "cabin": "Economy",
+            "price": 185,
+            "compliant": false,
+            "co2Kg": 116
+          },
+          {
+            "id": "flight-3",
+            "airline": "Lufthansa",
+            "flightNumber": "TO2720",
+            "departure": "10:45",
+            "arrival": "13:13",
+            "durationMin": 148,
+            "cabin": "Economy",
+            "price": 88,
+            "compliant": true,
+            "co2Kg": 133
+          }
+        ],
+        "hotels": [
+          {
+            "id": "hotel-1",
+            "name": "Hyatt Place Bordeaux",
+            "stars": 3,
+            "distanceKm": 1,
+            "pricePerNight": 92,
+            "compliant": true,
+            "address": "62 Rue de la République, Bordeaux"
+          },
+          {
+            "id": "hotel-2",
+            "name": "Mercure Bordeaux",
+            "stars": 3,
+            "distanceKm": 1.8,
+            "pricePerNight": 76,
+            "compliant": true,
+            "address": "14 Avenue Jean Jaurès, Bordeaux"
+          },
+          {
+            "id": "hotel-3",
+            "name": "Hyatt Place Bordeaux",
+            "stars": 4,
+            "distanceKm": 3.9,
+            "pricePerNight": 197,
+            "compliant": false,
+            "address": "41 Rue du Centre, Bordeaux"
+          }
+        ]
+      },
+      "aiRecommendation": null
+    },
+    {
+      "id": "b6a9d0cf-a68e-4575-b820-a42704fa726e",
+      "origin": "Paris",
+      "destination": "Marseille",
+      "reason": "Salon professionnel",
+      "tripType": "roundtrip",
+      "startDate": "2026-06-02",
+      "endDate": "2026-06-04",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "createdAt": "2026-09-15T12:21:51.301Z",
+      "suggestions": {
+        "flights": [
+          {
+            "id": "flight-1",
+            "airline": "Air France",
+            "flightNumber": "LH1093",
+            "departure": "14:45",
+            "arrival": "15:58",
+            "durationMin": 73,
+            "cabin": "Economy",
+            "price": 120,
+            "compliant": true,
+            "co2Kg": 66
+          },
+          {
+            "id": "flight-2",
+            "airline": "Lufthansa",
+            "flightNumber": "TO1998",
+            "departure": "15:15",
+            "arrival": "16:47",
+            "durationMin": 92,
+            "cabin": "Economy",
+            "price": 203,
+            "compliant": false,
+            "co2Kg": 83
+          },
+          {
+            "id": "flight-3",
+            "airline": "Air France",
+            "flightNumber": "TO4077",
+            "departure": "13:45",
+            "arrival": "15:14",
+            "durationMin": 89,
+            "cabin": "Economy",
+            "price": 81,
+            "compliant": true,
+            "co2Kg": 80
+          }
+        ],
+        "hotels": [
+          {
+            "id": "hotel-1",
+            "name": "Hyatt Place Marseille",
+            "stars": 3,
+            "distanceKm": 4.6,
+            "pricePerNight": 99,
+            "compliant": true,
+            "address": "85 Boulevard de la Gare, Marseille"
+          },
+          {
+            "id": "hotel-2",
+            "name": "Radisson Blu Marseille",
+            "stars": 4,
+            "distanceKm": 5.2,
+            "pricePerNight": 162,
+            "compliant": false,
+            "address": "116 Boulevard de la Gare, Marseille"
+          },
+          {
+            "id": "hotel-3",
+            "name": "Ibis Styles Marseille",
+            "stars": 4,
+            "distanceKm": 2.1,
+            "pricePerNight": 244,
+            "compliant": false,
+            "address": "22 Boulevard de la Gare, Marseille"
+          }
+        ]
+      },
+      "aiRecommendation": null
+    },
+    {
+      "id": "e3640c12-2490-4178-bff8-b918cbe47737",
+      "origin": "Paris",
+      "destination": "Lille",
+      "reason": "Réunion interne",
+      "tripType": "roundtrip",
+      "startDate": "2026-07-09",
+      "endDate": "2026-07-09",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "createdAt": "2026-09-15T12:21:51.348Z",
+      "suggestions": {
+        "flights": [
+          {
+            "id": "flight-1",
+            "airline": "Vueling",
+            "flightNumber": "AF3102",
+            "departure": "08:00",
+            "arrival": "09:53",
+            "durationMin": 113,
+            "cabin": "Economy",
+            "price": 74,
+            "compliant": true,
+            "co2Kg": 102
+          },
+          {
+            "id": "flight-2",
+            "airline": "KLM",
+            "flightNumber": "AF3344",
+            "departure": "16:30",
+            "arrival": "17:49",
+            "durationMin": 79,
+            "cabin": "Economy",
+            "price": 141,
+            "compliant": false,
+            "co2Kg": 71
+          },
+          {
+            "id": "flight-3",
+            "airline": "KLM",
+            "flightNumber": "LH7989",
+            "departure": "18:00",
+            "arrival": "19:06",
+            "durationMin": 66,
+            "cabin": "Economy",
+            "price": 235,
+            "compliant": false,
+            "co2Kg": 59
+          }
+        ],
+        "hotels": [
+          {
+            "id": "hotel-1",
+            "name": "Novotel Lille",
+            "stars": 3,
+            "distanceKm": 2.6,
+            "pricePerNight": 61,
+            "compliant": true,
+            "address": "93 Rue Victor Hugo, Lille"
+          },
+          {
+            "id": "hotel-2",
+            "name": "Radisson Blu Lille",
+            "stars": 3,
+            "distanceKm": 1.2,
+            "pricePerNight": 102,
+            "compliant": false,
+            "address": "64 Rue du Centre, Lille"
+          },
+          {
+            "id": "hotel-3",
+            "name": "Hyatt Place Lille",
+            "stars": 3,
+            "distanceKm": 0.8,
+            "pricePerNight": 127,
+            "compliant": false,
+            "address": "114 Avenue Jean Jaurès, Lille"
+          }
+        ]
+      },
+      "aiRecommendation": null
+    },
+    {
+      "id": "3f093b6b-44f6-480e-a9eb-cba182dd1a09",
+      "origin": "Paris",
+      "destination": "Nice",
+      "reason": "Rendez-vous client",
+      "tripType": "roundtrip",
+      "startDate": "2026-08-18",
+      "endDate": "2026-08-20",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "createdAt": "2026-09-15T12:21:51.394Z",
+      "suggestions": {
+        "flights": [
+          {
+            "id": "flight-1",
+            "airline": "Air France",
+            "flightNumber": "TO8643",
+            "departure": "08:00",
+            "arrival": "09:07",
+            "durationMin": 67,
+            "cabin": "Economy",
+            "price": 116,
+            "compliant": true,
+            "co2Kg": 60
+          },
+          {
+            "id": "flight-2",
+            "airline": "Air France",
+            "flightNumber": "AF9346",
+            "departure": "08:00",
+            "arrival": "10:07",
+            "durationMin": 127,
+            "cabin": "Economy",
+            "price": 106,
+            "compliant": true,
+            "co2Kg": 114
+          },
+          {
+            "id": "flight-3",
+            "airline": "KLM",
+            "flightNumber": "KL4514",
+            "departure": "17:15",
+            "arrival": "19:43",
+            "durationMin": 148,
+            "cabin": "Economy",
+            "price": 277,
+            "compliant": false,
+            "co2Kg": 133
+          }
+        ],
+        "hotels": [
+          {
+            "id": "hotel-1",
+            "name": "Mercure Nice",
+            "stars": 4,
+            "distanceKm": 2.8,
+            "pricePerNight": 78,
+            "compliant": true,
+            "address": "13 Rue Victor Hugo, Nice"
+          },
+          {
+            "id": "hotel-2",
+            "name": "Ibis Styles Nice",
+            "stars": 4,
+            "distanceKm": 5.3,
+            "pricePerNight": 115,
+            "compliant": false,
+            "address": "140 Boulevard de la Gare, Nice"
+          },
+          {
+            "id": "hotel-3",
+            "name": "Radisson Blu Nice",
+            "stars": 3,
+            "distanceKm": 1.6,
+            "pricePerNight": 97,
+            "compliant": true,
+            "address": "89 Boulevard de la Gare, Nice"
+          }
+        ]
+      },
+      "aiRecommendation": null
+    },
+    {
+      "id": "29b6c105-76de-4deb-9251-cc91bf66e3e0",
+      "origin": "Paris",
+      "destination": "Toulouse",
+      "reason": "Formation",
+      "tripType": "roundtrip",
+      "startDate": "2026-09-08",
+      "endDate": "2026-09-10",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "createdAt": "2026-09-15T12:21:51.437Z",
+      "suggestions": {
+        "flights": [
+          {
+            "id": "flight-1",
+            "airline": "Lufthansa",
+            "flightNumber": "AF3086",
+            "departure": "13:30",
+            "arrival": "15:42",
+            "durationMin": 132,
+            "cabin": "Economy",
+            "price": 124,
+            "compliant": false,
+            "co2Kg": 119
+          },
+          {
+            "id": "flight-2",
+            "airline": "Air France",
+            "flightNumber": "TO6864",
+            "departure": "14:45",
+            "arrival": "15:45",
+            "durationMin": 60,
+            "cabin": "Economy",
+            "price": 161,
+            "compliant": false,
+            "co2Kg": 54
+          },
+          {
+            "id": "flight-3",
+            "airline": "KLM",
+            "flightNumber": "VY7913",
+            "departure": "06:30",
+            "arrival": "08:49",
+            "durationMin": 139,
+            "cabin": "Economy",
+            "price": 272,
+            "compliant": false,
+            "co2Kg": 125
+          }
+        ],
+        "hotels": [
+          {
+            "id": "hotel-1",
+            "name": "Radisson Blu Toulouse",
+            "stars": 3,
+            "distanceKm": 1.2,
+            "pricePerNight": 77,
+            "compliant": true,
+            "address": "126 Rue du Centre, Toulouse"
+          },
+          {
+            "id": "hotel-2",
+            "name": "Radisson Blu Toulouse",
+            "stars": 4,
+            "distanceKm": 1.9,
+            "pricePerNight": 162,
+            "compliant": false,
+            "address": "59 Rue Victor Hugo, Toulouse"
+          },
+          {
+            "id": "hotel-3",
+            "name": "Ibis Styles Toulouse",
+            "stars": 4,
+            "distanceKm": 0.7,
+            "pricePerNight": 205,
+            "compliant": false,
+            "address": "70 Rue de la République, Toulouse"
+          }
+        ]
+      },
+      "aiRecommendation": null
+    },
+    {
+      "id": "aa642245-d444-4560-9b71-efba4c21cc7f",
+      "origin": "Paris",
+      "destination": "Marseille",
+      "reason": "Rendez-vous client",
+      "tripType": "roundtrip",
+      "startDate": "2026-10-05",
+      "endDate": "2026-10-07",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "createdAt": "2026-09-15T12:22:03.257Z",
+      "suggestions": {
+        "flights": [
+          {
+            "id": "flight-1",
+            "airline": "Air France",
+            "flightNumber": "LH1093",
+            "departure": "14:45",
+            "arrival": "15:58",
+            "durationMin": 73,
+            "cabin": "Economy",
+            "price": 120,
+            "compliant": true,
+            "co2Kg": 66
+          },
+          {
+            "id": "flight-2",
+            "airline": "Lufthansa",
+            "flightNumber": "TO1998",
+            "departure": "15:15",
+            "arrival": "16:47",
+            "durationMin": 92,
+            "cabin": "Economy",
+            "price": 203,
+            "compliant": false,
+            "co2Kg": 83
+          },
+          {
+            "id": "flight-3",
+            "airline": "Air France",
+            "flightNumber": "TO4077",
+            "departure": "13:45",
+            "arrival": "15:14",
+            "durationMin": 89,
+            "cabin": "Economy",
+            "price": 81,
+            "compliant": true,
+            "co2Kg": 80
+          }
+        ],
+        "hotels": [
+          {
+            "id": "hotel-1",
+            "name": "Hyatt Place Marseille",
+            "stars": 3,
+            "distanceKm": 4.6,
+            "pricePerNight": 99,
+            "compliant": true,
+            "address": "85 Boulevard de la Gare, Marseille"
+          },
+          {
+            "id": "hotel-2",
+            "name": "Radisson Blu Marseille",
+            "stars": 4,
+            "distanceKm": 5.2,
+            "pricePerNight": 162,
+            "compliant": false,
+            "address": "116 Boulevard de la Gare, Marseille"
+          },
+          {
+            "id": "hotel-3",
+            "name": "Ibis Styles Marseille",
+            "stars": 4,
+            "distanceKm": 2.1,
+            "pricePerNight": 244,
+            "compliant": false,
+            "address": "22 Boulevard de la Gare, Marseille"
+          }
+        ]
+      },
+      "aiRecommendation": null
+    }
+  ],
+  "bookings": [
+    {
+      "id": "0d7fd238-f034-4c76-b7c0-30c692c8eeb3",
+      "requestId": "83031ed1-7645-4386-ba56-03ce094334eb",
+      "origin": "Paris",
+      "destination": "Lyon",
+      "reason": "Formation",
+      "tripType": "roundtrip",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "startDate": "2026-04-14",
+      "endDate": "2026-04-16",
+      "flight": {
+        "id": "flight-1",
+        "airline": "KLM",
+        "flightNumber": "KL2328",
+        "departure": "13:45",
+        "arrival": "15:15",
+        "durationMin": 90,
+        "cabin": "Economy",
+        "price": 122,
+        "compliant": false,
+        "co2Kg": 81
+      },
+      "hotel": {
+        "id": "hotel-1",
+        "name": "Novotel Lyon",
+        "stars": 4,
+        "distanceKm": 1.6,
+        "pricePerNight": 101,
+        "compliant": false,
+        "address": "117 Boulevard de la Gare, Lyon"
+      },
+      "status": "confirmed",
+      "bookedAt": "2026-09-15T12:21:51.249Z"
+    },
+    {
+      "id": "84378a9d-fa28-4466-b642-4f0db2f7ea13",
+      "requestId": "0cb8a0d3-f5f0-4fd8-944b-eac4035d54c1",
+      "origin": "Paris",
+      "destination": "Bordeaux",
+      "reason": "Rendez-vous client",
+      "tripType": "roundtrip",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "startDate": "2026-05-06",
+      "endDate": "2026-05-07",
+      "flight": {
+        "id": "flight-1",
+        "airline": "Vueling",
+        "flightNumber": "TO4003",
+        "departure": "10:00",
+        "arrival": "11:14",
+        "durationMin": 74,
+        "cabin": "Economy",
+        "price": 74,
+        "compliant": true,
+        "co2Kg": 67
+      },
+      "hotel": {
+        "id": "hotel-2",
+        "name": "Mercure Bordeaux",
+        "stars": 3,
+        "distanceKm": 1.8,
+        "pricePerNight": 76,
+        "compliant": true,
+        "address": "14 Avenue Jean Jaurès, Bordeaux"
+      },
+      "status": "confirmed",
+      "bookedAt": "2026-09-15T12:21:51.293Z"
+    },
+    {
+      "id": "e0a44363-b0a1-40f4-8957-9f1cd6ccc106",
+      "requestId": "b6a9d0cf-a68e-4575-b820-a42704fa726e",
+      "origin": "Paris",
+      "destination": "Marseille",
+      "reason": "Salon professionnel",
+      "tripType": "roundtrip",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "startDate": "2026-06-02",
+      "endDate": "2026-06-04",
+      "flight": {
+        "id": "flight-2",
+        "airline": "Lufthansa",
+        "flightNumber": "TO1998",
+        "departure": "15:15",
+        "arrival": "16:47",
+        "durationMin": 92,
+        "cabin": "Economy",
+        "price": 203,
+        "compliant": false,
+        "co2Kg": 83
+      },
+      "hotel": {
+        "id": "hotel-1",
+        "name": "Hyatt Place Marseille",
+        "stars": 3,
+        "distanceKm": 4.6,
+        "pricePerNight": 99,
+        "compliant": true,
+        "address": "85 Boulevard de la Gare, Marseille"
+      },
+      "status": "confirmed",
+      "bookedAt": "2026-09-15T12:21:51.339Z"
+    },
+    {
+      "id": "3d77fbcc-180f-4615-b9b3-97d4fb4930fb",
+      "requestId": "e3640c12-2490-4178-bff8-b918cbe47737",
+      "origin": "Paris",
+      "destination": "Lille",
+      "reason": "Réunion interne",
+      "tripType": "roundtrip",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "startDate": "2026-07-09",
+      "endDate": "2026-07-09",
+      "flight": {
+        "id": "flight-1",
+        "airline": "Vueling",
+        "flightNumber": "AF3102",
+        "departure": "08:00",
+        "arrival": "09:53",
+        "durationMin": 113,
+        "cabin": "Economy",
+        "price": 74,
+        "compliant": true,
+        "co2Kg": 102
+      },
+      "hotel": {
+        "id": "hotel-1",
+        "name": "Novotel Lille",
+        "stars": 3,
+        "distanceKm": 2.6,
+        "pricePerNight": 61,
+        "compliant": true,
+        "address": "93 Rue Victor Hugo, Lille"
+      },
+      "status": "confirmed",
+      "bookedAt": "2026-09-15T12:21:51.385Z"
+    },
+    {
+      "id": "1f770e77-d232-4160-a0d9-b49d799014b2",
+      "requestId": "3f093b6b-44f6-480e-a9eb-cba182dd1a09",
+      "origin": "Paris",
+      "destination": "Nice",
+      "reason": "Rendez-vous client",
+      "tripType": "roundtrip",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "startDate": "2026-08-18",
+      "endDate": "2026-08-20",
+      "flight": {
+        "id": "flight-3",
+        "airline": "KLM",
+        "flightNumber": "KL4514",
+        "departure": "17:15",
+        "arrival": "19:43",
+        "durationMin": 148,
+        "cabin": "Economy",
+        "price": 277,
+        "compliant": false,
+        "co2Kg": 133
+      },
+      "hotel": {
+        "id": "hotel-2",
+        "name": "Ibis Styles Nice",
+        "stars": 4,
+        "distanceKm": 5.3,
+        "pricePerNight": 115,
+        "compliant": false,
+        "address": "140 Boulevard de la Gare, Nice"
+      },
+      "status": "confirmed",
+      "bookedAt": "2026-09-15T12:21:51.428Z"
+    },
+    {
+      "id": "32ecacb8-7a0f-4f33-a9c3-5dcf9743f273",
+      "requestId": "29b6c105-76de-4deb-9251-cc91bf66e3e0",
+      "origin": "Paris",
+      "destination": "Toulouse",
+      "reason": "Formation",
+      "tripType": "roundtrip",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "startDate": "2026-09-08",
+      "endDate": "2026-09-10",
+      "flight": {
+        "id": "flight-1",
+        "airline": "Lufthansa",
+        "flightNumber": "AF3086",
+        "departure": "13:30",
+        "arrival": "15:42",
+        "durationMin": 132,
+        "cabin": "Economy",
+        "price": 124,
+        "compliant": false,
+        "co2Kg": 119
+      },
+      "hotel": {
+        "id": "hotel-1",
+        "name": "Radisson Blu Toulouse",
+        "stars": 3,
+        "distanceKm": 1.2,
+        "pricePerNight": 77,
+        "compliant": true,
+        "address": "126 Rue du Centre, Toulouse"
+      },
+      "status": "confirmed",
+      "bookedAt": "2026-09-15T12:21:51.474Z"
+    },
+    {
+      "id": "6b579b31-17a0-42bd-a153-d93310dc5511",
+      "requestId": "aa642245-d444-4560-9b71-efba4c21cc7f",
+      "origin": "Paris",
+      "destination": "Marseille",
+      "reason": "Rendez-vous client",
+      "tripType": "roundtrip",
+      "travelers": 1,
+      "note": "",
+      "requester": "Arthur Mille",
+      "startDate": "2026-10-05",
+      "endDate": "2026-10-07",
+      "flight": {
+        "id": "flight-1",
+        "airline": "Air France",
+        "flightNumber": "LH1093",
+        "departure": "14:45",
+        "arrival": "15:58",
+        "durationMin": 73,
+        "cabin": "Economy",
+        "price": 120,
+        "compliant": true,
+        "co2Kg": 66
+      },
+      "hotel": {
+        "id": "hotel-1",
+        "name": "Hyatt Place Marseille",
+        "stars": 3,
+        "distanceKm": 4.6,
+        "pricePerNight": 99,
+        "compliant": true,
+        "address": "85 Boulevard de la Gare, Marseille"
+      },
+      "status": "confirmed",
+      "bookedAt": "2026-09-15T12:22:03.300Z"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "386d1783-6a21-4a28-af19-3e0b09b781ec",
+      "category": "Repas",
+      "amount": 42.5,
+      "date": "2026-09-09",
+      "note": "Déjeuner client Toulouse",
+      "bookingId": null,
+      "status": "pending",
+      "createdAt": "2026-09-15T12:22:03.308Z"
+    },
+    {
+      "id": "c8f897b1-0e16-424b-bc2e-23b9ea9989af",
+      "category": "Taxi / VTC",
+      "amount": 28,
+      "date": "2026-09-08",
+      "note": "Aéroport Toulouse",
+      "bookingId": null,
+      "status": "pending",
+      "createdAt": "2026-09-15T12:22:03.314Z"
+    },
+    {
+      "id": "6909aa75-f709-49bb-9aa5-3a06d5f56cfe",
+      "category": "Repas",
+      "amount": 36,
+      "date": "2026-08-19",
+      "note": "Dîner équipe Nice",
+      "bookingId": null,
+      "status": "pending",
+      "createdAt": "2026-09-15T12:22:03.321Z"
+    },
+    {
+      "id": "badac8d8-1990-48ff-a70e-f9d22b7cf08b",
+      "category": "Transports",
+      "amount": 15,
+      "date": "2026-08-19",
+      "note": "Métro Nice",
+      "bookingId": null,
+      "status": "pending",
+      "createdAt": "2026-09-15T12:22:03.327Z"
+    },
+    {
+      "id": "ec3156fd-9349-435b-b01a-5a14e62d863f",
+      "category": "Parking",
+      "amount": 22,
+      "date": "2026-06-03",
+      "note": "Parking salon Marseille",
+      "bookingId": null,
+      "status": "pending",
+      "createdAt": "2026-09-15T12:22:03.333Z"
+    }
+  ]
 }
